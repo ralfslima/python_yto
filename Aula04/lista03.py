@@ -27,6 +27,6 @@ while indice < 5:
         nomes.append(nome)
         indice += 1
 
-# Exibir os cinco nomes
+# Exibir os cinco nomes 
 for n in nomes:
     print(n)
