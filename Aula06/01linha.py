@@ -19,5 +19,5 @@ plt.grid()
 plt.xlabel("Horizontal")
 plt.ylabel("Vertical")
 
-# Exibir gráfico
+# Exibir gráfico 
 plt.show()

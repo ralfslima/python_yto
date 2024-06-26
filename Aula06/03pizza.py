@@ -20,5 +20,5 @@ plt.pie(dados, labels=rotulos, explode=espacamento, shadow=True, colors=cores)
 # Legenda
 #plt.legend(title="Tecnologias")
 
-# Exibir gráfico
+# Exibir gráfico 
 plt.show()

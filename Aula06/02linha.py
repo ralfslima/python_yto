@@ -21,5 +21,5 @@ plt.legend()
 # Grid
 plt.grid()
 
-# Exibir gráfico
+# Exibir gráfico 
 plt.show()
