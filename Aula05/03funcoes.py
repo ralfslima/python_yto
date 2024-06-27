@@ -34,7 +34,7 @@ df = pd.DataFrame(dados)
 #print("A quantidade de valores é {}".format(df["valor"].count()))
 
 # Retornar a quantidade de informações em uma coluna sem duplicadas
-#print(df["marca"].nunique())
+#print(df["marca"].unique())
 
 # Condicional (IF)
 #print(df[df["valor"] >= 4000])
