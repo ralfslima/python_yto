@@ -1,0 +1,28 @@
+form{
+    width: 70%;
+    margin: 5% auto;
+    text-align: center;
+}
+
+form input, form select{
+    margin-top: 1.5%;
+}
+
+form img{
+    width: 20%;
+    margin-bottom: 5%;
+}
+
+#graficoBarra{
+    width: 70% !important;
+    height: 50% !important;
+    margin: 5% auto;
+}
+
+#graficoPizza{
+    width: 35% !important;
+    height: 30% !important;
+    margin: 5% auto;
+}
+
+
