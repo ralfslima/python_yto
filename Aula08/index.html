@@ -53,11 +53,11 @@
     <form>
         <img src="icone.png">
 
-        <input type="text" placeholder="Produto vendido" class="form-control">
+        <input type="text" id="produto" placeholder="Produto vendido" class="form-control">
         
-        <input type="number" placeholder="Quantidade vendida" class="form-control">
+        <input type="number" id="quantidade" placeholder="Quantidade vendida" class="form-control">
 
-        <select class="form-control">
+        <select class="form-control" id="marca">
             <option>Informe a marca do produto</option>
             <option>Apple</option>
             <option>Epson</option>
@@ -68,9 +68,9 @@
             <option>Sony</option>
         </select>
 
-        <input type="number" placeholder="Valor total da venda" class="form-control">
+        <input type="number" id="total" placeholder="Valor total da venda" class="form-control">
 
-        <input type="button" value="Cadastrar" class="btn btn-primary">
+        <input type="button" onclick="cadastrar()" value="Cadastrar" class="btn btn-primary">
     </form>
 
     <!-- Tabela -->

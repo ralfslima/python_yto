@@ -53,3 +53,34 @@ function atualizarTabela(){
     }
 
 }
+
+// Função para cadastrar vendas
+function cadastrar(){
+
+    // Obter os dados da venda
+    let produto = document.getElementById("produto");
+    let quantidade = document.getElementById("quantidade");
+    let marca = document.getElementById("marca");
+    let total = document.getElementById("total");
+
+    // Criar objeto
+    let obj = {
+        "nome":produto.value,
+        "quantidade":quantidade.value,
+        "marca":marca.value,
+        "total":total.value
+    }
+
+    // Adicionar objeto na lista
+    vendas.push(obj);
+
+    // Atualizar a tabela
+    atualizarTabela();
+
+    // Realizar requisição
+    fetch('http://localhost:8080/cadastrar',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(obj)
+    })
+}
