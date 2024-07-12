@@ -37,9 +37,9 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gráficos</a>
                 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="vendas.html">Vendas</a></li>
-                            <li><a class="dropdown-item" href="marcas.html">Marcas</a></li>
-                            <li><a class="dropdown-item" href="estoque.html">Estoque</a></li>
+                            <li><a class="dropdown-item" href="vendas.html">Vendas Realizadas</a></li>
+                            <li><a class="dropdown-item" href="marcas.html">Quantidade por Marcas</a></li>
+                            <li><a class="dropdown-item" href="produtos.html">Vendas por Produtos</a></li>
                         </ul>
                     </li>
 
@@ -57,21 +57,31 @@
 
     <!-- Script para gerar o gráfico -->
     <script>
-        
-        // Obter o canvas
-        let grafico = document.getElementById("graficoBarra");
+        // Vetor de vendas
+        let vendas = [];
 
-        // Criar gráfico
-        new Chart(grafico,{
-            type:"bar",
-            data:{
-                labels:["Ricardo", "Isabela", "Cristina", "Paulo"],
-                datasets:[{
-                    label:"Vendas de cada vendededor",
-                    data:[9800, 7500, 12400, 10600]
-                }]
-            }
-        });
+        // Fetch
+        fetch('http://localhost:8080/vendas')
+        .then(obj => obj.json())
+        .then(obj => {
+            // Enviar objetos para a lista (vetor)
+            vendas = obj;
+
+            // Obter o canvas
+            let grafico = document.getElementById("graficoBarra");
+            
+            // Criar gráfico
+            new Chart(grafico,{
+                type:"bar",
+                data:{
+                    labels:["Cleber", "Daniel", "Lucas", "Paula", "Sabrina"],
+                    datasets:[{
+                        label:"Vendas de cada vendededor",
+                        data:[vendas.Cleber, vendas.Daniel, vendas.Lucas, vendas.Paula, vendas.Sabrina]
+                    }]
+                }
+            });
+        })
 
     </script>
 </body>

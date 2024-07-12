@@ -1,5 +1,5 @@
 // Vetor (lista)
-vendas = [];
+let vendas = [];
 
 // Função para obter todas as vendas
 function listar(){
@@ -47,7 +47,7 @@ function atualizarTabela(){
         colunaMarca.innerHTML = vendas[indice].marca;
         colunaTotal.innerHTML = vendas[indice].total;
         colunaQuantidade.innerHTML = vendas[indice].quantidade;
-        colunaVendedor.innerHTML = "--";
+        colunaVendedor.innerHTML = vendas[indice].vendedor;
         colunaRemover.innerHTML = `<button class="btn btn-danger" onClick="remover(${indice})">Remover</button>`;
 
     }
@@ -60,6 +60,7 @@ function cadastrar(){
     // Obter os dados da venda
     let produto = document.getElementById("produto");
     let quantidade = document.getElementById("quantidade");
+    let vendedor = document.getElementById("vendedor");
     let marca = document.getElementById("marca");
     let total = document.getElementById("total");
 
@@ -67,6 +68,7 @@ function cadastrar(){
     let obj = {
         "nome":produto.value,
         "quantidade":quantidade.value,
+        "vendedor":vendedor.value,
         "marca":marca.value,
         "total":total.value
     }

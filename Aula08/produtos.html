@@ -37,9 +37,9 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gráficos</a>
                 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="vendas.html">Vendas</a></li>
-                            <li><a class="dropdown-item" href="marcas.html">Marcas</a></li>
-                            <li><a class="dropdown-item" href="estoque.html">Estoque</a></li>
+                            <li><a class="dropdown-item" href="vendas.html">Vendas Realizadas</a></li>
+                            <li><a class="dropdown-item" href="marcas.html">Quantidade por Marcas</a></li>
+                            <li><a class="dropdown-item" href="produtos.html">Vendas por Produtos</a></li>
                         </ul>
                     </li>
 
@@ -56,23 +56,45 @@
     <canvas id="graficoBarra"></canvas>
 
     <!-- Script para gerar o gráfico -->
+    <!-- Script para gerar o gráfico -->
     <script>
-        
-        // Obter o canvas
-        let grafico = document.getElementById("graficoBarra");
+        // Fetch para obter os dados da API
+        fetch('http://localhost:8080/produtos')
+        .then(response => response.json())
+        .then(data => {
+            // Extrair nomes dos produtos e valores de vendas
+            let nomesProdutos = data.map(item => item.nome);
+            let valoresVendas = data.map(item => item.valor_total);
 
-        // Criar gráfico
-        new Chart(grafico,{
-            type:"bar",
-            data:{
-                labels:["iPhone 15", "Galaxy S24", "TV 32", "Teclado"],
-                datasets:[{
-                    label:"Produtos em estoque",
-                    data:[10, 20, 30, 15]
-                }]
-            }
+            // Obter o canvas do gráfico
+            let ctx = document.getElementById('graficoBarra').getContext('2d');
+
+            // Criar o gráfico de barras
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: nomesProdutos,
+                    datasets: [{
+                        label: 'Total de vendas de cada produto',
+                        data: valoresVendas,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Cor de fundo das barras
+                        borderColor: 'rgba(54, 162, 235, 1)', // Cor da borda das barras
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true // Começar o eixo y do gráfico no zero
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao obter os dados da API:', error);
         });
-
     </script>
+
 </body>
 </html>

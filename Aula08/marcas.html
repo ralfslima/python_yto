@@ -37,9 +37,9 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gráficos</a>
                 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="vendas.html">Vendas</a></li>
-                            <li><a class="dropdown-item" href="marcas.html">Marcas</a></li>
-                            <li><a class="dropdown-item" href="estoque.html">Estoque</a></li>
+                            <li><a class="dropdown-item" href="vendas.html">Vendas Realizadas</a></li>
+                            <li><a class="dropdown-item" href="marcas.html">Quantidade por Marcas</a></li>
+                            <li><a class="dropdown-item" href="produtos.html">Vendas por Produtos</a></li>
                         </ul>
                     </li>
 
@@ -57,21 +57,33 @@
 
     <!-- Script para gerar o gráfico -->
     <script>
-        
-        // Obter o canvas
-        let grafico = document.getElementById("graficoPizza");
 
-        // Criar gráfico
-        new Chart(grafico,{
-            type:"pie",
-            data:{
-                labels:["Apple", "Microsoft", "Samsung", "Sony"],
-                datasets:[{
-                    label:"Produtos por marca",
-                    data:[10, 20, 30, 15]
-                }]
-            }
-        });
+        // Lista de marcas
+        let marcas = [];
+
+        // Fetch
+        fetch('http://localhost:8080/marcas')
+        .then(obj => obj.json())
+        .then(obj => {
+            // Enviar objetos para a lista (vetor)
+            marcas = obj;
+
+            // Obter o canvas
+            let grafico = document.getElementById("graficoPizza");
+            
+            // Criar gráfico
+            new Chart(grafico,{
+                type:"pie",
+                data:{
+                    labels:["Apple", "Samsung", "Sony", "Philips", "HP", "Epson", "Microsoft"],
+                    datasets:[{
+                        label:"Vendas de cada vendededor",
+                        data:[marcas.Apple, marcas.Samsung, marcas.Sony, marcas.Philips, marcas.HP, marcas.Epson, marcas.Microsoft]
+                    }]
+                }
+            });
+        })
+    
 
     </script>
 </body>
