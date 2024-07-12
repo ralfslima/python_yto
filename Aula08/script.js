@@ -48,7 +48,7 @@ function atualizarTabela(){
         colunaTotal.innerHTML = vendas[indice].total;
         colunaQuantidade.innerHTML = vendas[indice].quantidade;
         colunaVendedor.innerHTML = "--";
-        colunaRemover.innerHTML = `<button class="btn btn-danger">Remover</button>`;
+        colunaRemover.innerHTML = `<button class="btn btn-danger" onClick="remover(${indice})">Remover</button>`;
 
     }
 
@@ -83,4 +83,20 @@ function cadastrar(){
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify(obj)
     })
+}
+
+// Função para remover vendas
+function remover(indice){
+
+    // Remover da lista
+    vendas.splice(indice, 1);
+
+    // Requisição para a API
+    fetch('http://localhost:8080/remover/'+indice, {
+        method:'DELETE'
+    })
+
+    // Atualizar a tabela
+    atualizarTabela();
+
 }
